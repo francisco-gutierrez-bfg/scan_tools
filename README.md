@@ -7,16 +7,16 @@ Importante:
 ===========
 
 Esta herramienta se ha desarrollado para ejecutarse exclusivamente en dictribuciones Ubuntu 18.x en adelante.
-Posiblemente correria en Debian, pero no ha sido probada.
+Posiblemente correría en Debian, pero no ha sido probada.
 
-Descripcion:
+Descripción:
 ============
-Sistema desarrollado para evaluar y ejecutar pentesting sobre sistemas informaticos con el fin de identificar puntos debiles,
+Sistema desarrollado para evaluar y ejecutar pentesting sobre sistemas informáticos con el fin de identificar puntos débiles,
 esta herramienta no se ha desarrollado con fines delictivos.
-El uso de los datos y los efectos que pueda causar su ejecucion son responsabilidad del usuario y no del desarrollador.
-Esta herramienta se ha desarrollado con fines eticos y estrictamente para ejecucion de actividade de laboratorio.
+El uso de los datos y los efectos que pueda causar su ejecución son responsabilidad del usuario y no del desarrollador.
+Esta herramienta se ha desarrollado con fines éticos y estrictamente para ejecución de actividades de laboratorio.
 
-Ejecucion:
+Ejecución:
 ==========
 ./security
 
@@ -29,7 +29,7 @@ La ejecucion de esta utilidad hace registro de todo su actividad dentro en la si
 Componentes:
 ============
 
-Esta utilidad consta de varios componentes, para lograr su fincionamiento.
+Esta utilidad consta de varios componentes, para lograr su funcionamiento debe tener en cuenta las siguientes dependencias:
  - Golang (go1.13.8 linux/amd64)
  - Python 3.5.x
  - Perl 5.x
@@ -43,21 +43,22 @@ Esta utilidad consta de varios componentes, para lograr su fincionamiento.
 Programa principal:
 ===================
 
-El programa principal esta escrito en bash, contiene algunas funciones en perl y cumple las siguientes funciones:
+El programa principal está escrito en bash, contiene algunas funciones en perl y cumple las siguientes funciones:
 
-1- Verificacion de todas las dependencias necearias para que las subrutinas (scripts Golang, Scripts NMAP).
-   Sin estas dependencias, el programa no funciona, por esta razon, el programa principal dara inicio al 
-   proceso de instaacion de dependencias automaticamente, pidiendo autorizacion y confirmacion del usuario.
+1- Verificación de todas las dependencias necearias para el correcto funcionamiento de las subrutinas
+   (Scripts Golang, Scripts NMAP).
+   Sin estas dependencias, la solución no funcionará, por esta razón el programa principal dará inicio al 
+   proceso de instalación de dependencias automáticamente, pidiendo autorización y confirmación del usuario.
    
-   La instalacion de dependencias puede ser ejecutada manualmente de la siguiente manera:
-   El script de instalacion de dependencias (install_dependencies) se encuentra ubicado en el folder denominado
-   "Install_dependencies", para ejecutarlo solo es necesario correr el siguiente comando:
+   La instalación de dependencias puede ser ejecutada manualmente de la siguiente manera:
+   El script de instalación de dependencias (install_dependencies) se encuentra ubicado en el folder denominado
+   "Install_dependencies", para ejecutarlo sólo es necesario correr el siguiente comando:
    ./install_dependencies       
 
-2- Una vez las condiciones y dependencias son cumplidas, el programa principal presenta un menu con
-   diferentes opciones para escaneo y explotacion de vulnerabilidades. 
+2- Una vez las condiciones y dependencias son cumplidas, el programa principal presenta un menú con
+   diferentes opciones para escaneo y explotación de vulnerabilidades. 
 
-Definicion de subrutinas:
+Definición de subrutinas:
 =========================
 
 Golang:
@@ -70,37 +71,37 @@ HYDRA_GO: Contiene el codigo encargado de ejecutar tyareas de pentesting mediant
           Los diccionarios para dicho procedimiento se encuentran ubicados en el
           folder denominado con el mismo nombre "Diccionarios".
 
-NIKTO_GO: Contiene el codigo de ejecucion de la herramienta de escaneo de vulnerabilidades
+NIKTO_GO: Contiene el código de ejecucion de la herramienta de escaneo de vulnerabilidades
           en aplicaciones/portales web, en esta utilidad es necesario especificar el puerto
-          en el que se ejecuta la aplicacion objetivo de la evaluacion.
+          en el que se ejecuta la aplicación objetivo de la evaluación.
 
-NMAP_GO: Contiene codifgo de ejecucion de varias operaciones con NMAP, tales como:
-         - Revision de CVE's
-         - Revision de vulnerabilidades
-         - Revision de puertos abiertos y disponibles. 
+NMAP_GO: Contiene código de ejecución de varias operaciones con NMAP, tales como:
+         - Revisión de CVE's
+         - Revisión de vulnerabilidades
+         - Revisión de puertos abiertos y disponibles. 
 
 Bash:
 =====
-El programa principal se encuentra escrito en este interprete.
+El programa principal se encuentra escrito en este intérprete.
 
 Perl:
 =====
 La barra de progreso se encuentra escrita en perl, esta barra se encarga de monitorear
-el progreso de ejecuciones de algunas tareas de instalacion de dependencias.
+el progreso de ejecuciones de algunas tareas de instalación de dependencias.
 
 Nmap:
 =====
-Herramienta con funcionalidades diversas enfocadas a la evaluacion de vulnerabilidades.
+Herramienta con funcionalidades diversas enfocadas a la evaluación de vulnerabilidades.
 
 Nikto:
 ======
-Herramienta con funcionalidades diversas enfocadas a la evaluacion de vulnerabilidades
+Herramienta con funcionalidades diversas enfocadas a la evaluación de vulnerabilidades
 en aplicaciones web.
 
 Hydra:
 ======
-Herramienta con funcionalidades de crackeo de credenciales enfocada a la penetracion
-de diersos sistemas informaticos y/o de comunicaciones mediante mecanismos de
+Herramienta con funcionalidades de crackeo de credenciales enfocada a la penetración
+de diversos sistemas informáticos y/o de comunicaciones mediante mecanismos de
 fuerza bruta.
 
 
