@@ -1,9 +1,9 @@
                                                          Security Scanning
                                                          =================
-                                                         #################
+                                                         
 
 
-IMPORTANTE:
+Importante:
 ===========
 
 Esta herramienta se ha desarrollado para ejecutarse exclusivamente en dictribuciones Ubuntu 18.x en adelante.
