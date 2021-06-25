@@ -1,30 +1,27 @@
 #!/usr/bin/env python3
 
 # -*- coding: utf-8 -*-
-#title           :security.py
-#description     :Escaneo de Vulnerabilidades y Pentesting
-#author          :Francisco Gutierrez
-#date            :
-#version         :1
-#usage           :python security.py
-#notes           :
+#Título          :security.py
+#descripción     :Escaneo de Vulnerabilidades y Pentesting
+#autor           :Francisco Gutiérrez
+#fecha           : Jun 25 2021
+#versión         :1
+#uso             :python security.py
 #python_version  :3.x.x 
 #=======================================================================
 
-# Import the modules needed to run the script.
 import sys, os
 
-# Main definition - constants
 menu_actions  = {}  
 
 #os.chdir('Modules/NMAP_GO')
 #print(os.getcwd())
 
 # ========================
-#     Funcion de Menu
+#     Función de Menu
 # ========================
 
-# Main menu
+# Menú principal
 def main_menu():
     os.system('clear')
     
@@ -41,7 +38,7 @@ def main_menu():
 
     return
 
-# Ejecucion de Menu
+# Ejecución de Menú
 def exec_menu(choice):
     os.system('clear')
     ch = choice.lower()
@@ -51,11 +48,11 @@ def exec_menu(choice):
         try:
             menu_actions[ch]()
         except KeyError:
-            print ("Opcion invalida.\n")
+            print ("Opción inválida.\n")
             menu_actions['main_menu']()
     return
 
-# Opcion 1
+# Opción 1
 def menu1():
     print ("Escaneo y chequeo de CVE's\n")
     print ("##########################")
@@ -66,7 +63,7 @@ def menu1():
     return
 
 
-# Opcion 2 2
+# Opción 2
 def menu2():
     print ("Escaneo de Vulnerabilidades\n")
     print ("###########################")
@@ -76,7 +73,7 @@ def menu2():
     back()
     return
 
-# Opcion 3
+# Opción 3
 def menu3():
     print ("Escaneo de Vulnerabilidades de sitios web\n")
     print ("#########################################")
@@ -88,9 +85,9 @@ def menu3():
     back()
     return
 
-# Opcion 4
+# Opción 4
 def menu4():
-    print ("Escaneo e identificacion de puertos abiertos\n")
+    print ("Escaneo e identificación de puertos abiertos\n")
     print ("###########################")
     ip = input("Ingrese IP de dispositivo:")
     os.system('nmap ' + ip)
@@ -98,25 +95,25 @@ def menu4():
     back()
     return
 
-# Opcion 5
+# Opción 5
 def menu5():
     print ("Pentesting\n")
     print ("##########")
     print("")
     print ("   ##################################################################################################################")
-    print ("   #  Este proceso puede tardar un tiempo, posiblemente horas, presione <Enter> para continuar, si esta de acuerdo  #")
+    print ("   #  Este proceso puede tardar un tiempo, posiblemente horas, presione <Enter> para continuar, si está de acuerdo  #")
     print ("   ##################################################################################################################")
     input("")
     print("")
     ip = input("Ingrese IP de dispositivo:")
     puerto = input("Ingrese nombre servicio, ejemplo: rdp,ssh,ftp,telnet:")
-    puertonum = input("Ingrese numero de puerto:")
+    puertonum = input("Ingrese número de puerto:")
     print("")
-    print("Trying Nmap bruteforce...")
+    print("Intentando fuerza bruta mediante Nmap...")
     command1 = "nmap -p %s --script %s-brute --script-args userdb=Modules/HYDRA_GO/diccionarios/wordlists/users.lst,passdb=Modules/HYDRA_GO/diccionarios/wordlists/passwords.lst %s" % (puertonum, puerto, ip)
     os.system(command1)
     print("")
-    print("Trying Hydra...")
+    print("Intentando fuerza bruta mediante Hydra...")
     command = "hydra -L Modules/HYDRA_GO/diccionarios/wordlists/users.lst -P Modules/HYDRA_GO/diccionarios/wordlists/passwords.lst %s %s | grep -vi github | grep -vi warning" % (ip, puerto)
     os.system(command)
     print("")
@@ -125,19 +122,17 @@ def menu5():
     return
 
 
-# Back to main menu
+# Volver a menú principal
 def back():
     menu_actions['main_menu']()
 
-# Exit program
 def exit():
     sys.exit()
 
 # ========================
-#    Definicion de Menu
+#    Definición de Menú
 # ========================
 
-# Menu definition
 menu_actions = {
     'main_menu': main_menu,
     '1': menu1,
@@ -152,7 +147,6 @@ menu_actions = {
 #     Programa P/pal
 # =======================
 
-# Main Program
 if __name__ == "__main__":
     # Launch main menu
     main_menu()
