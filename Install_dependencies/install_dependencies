@@ -1,0 +1,26 @@
+#!/bin/sh
+
+currentpwd=`pwd`
+
+progress1(){
+perl -e '$|=@s=qw(<->=============] =<->============] ==<->===========] ===<->==========] ====<->=========] =====<->========] ======<->=======] =======<->======] ========<->=====] ========<->=====] =========<->====] ==========<->===] ===========<->==] ============<->=] =============<->] ============<->=] ===========<->==] ==========<->===] =========<->====] ========<->=====] =======<->======] ======<->=======] =====<->========] ====<->=========] ===<->==========] ==<->===========] =<->============]);while(kill 0,'$!'){ print "\r  Status[",$s[$t++%($#s+1)];select(undef,undef,undef,0.2);}'
+}
+
+
+installdebs(){
+sudo apt -y install golang hydra ncat nikto nmap perl
+}
+
+nmapscriptsintall(){
+sudo git clone https://github.com/scipag/vulscan /usr/share/nmap/scripts/vulscan
+#sudo ln -s scipag_vulscan /usr/share/nmap/scripts/vulscan
+#cp -rf scipag_vulscan /usr/share/nmap/scripts/vulscan
+
+sudo git clone https://github.com/vulnersCom/nmap-vulners /usr/share/nmap/scripts/nmapvulners
+#sudo ln -s nmap-vulners /usr/share/nmap/scripts/nmap-vulners
+#cp -rf nmap-vulners /usr/share/nmap/scripts/nmap-vulners
+}
+cd $currentpwd
+
+installdebs
+nmapscriptsintall
