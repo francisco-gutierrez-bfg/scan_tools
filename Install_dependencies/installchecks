@@ -1,0 +1,7 @@
+installgo=1
+installhydra=1
+installncat=1
+installnikto=1
+installnmap=1
+nmap-vulscan=1
+nmap-vulners=1
