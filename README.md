@@ -108,8 +108,8 @@ de diversos sistemas informáticos y/o de comunicaciones mediante mecanismos de
 fuerza bruta.
 
 
-Desarrollado por:
- Francisco Javier Gutierrez G.
- Sr Linux Engineer
- ingenierialinuxpereira@gmail.com
+Desarrollado por:  
+ Francisco Javier Gutierrez G.  
+ Sr Linux Engineer  
+ ingenierialinuxpereira@gmail.com  
 
