@@ -111,6 +111,5 @@ fuerza bruta.
 Desarrollado por:
  Francisco Javier Gutierrez G.
  Sr Linux Engineer
- fgutierrez@hexacta.com
- HEXACTA 2021
+ ingenierialinuxpereira@gmail.com
 
