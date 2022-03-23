@@ -22,34 +22,32 @@ installdeps(){
 clear
 echo ""
 echo "   ######################################################################################"
-echo "   #                       E R R O R  D E  D E P E N D E N C I A!                       #"
+echo "   #                        D E P E N D E N C Y - E R R O R S !                         #"
 echo "   ######################################################################################"
 echo "   #                                                                                    #"
 echo "   ######################################################################################"
 echo "   #                                                                                    #"
-echo "   # Por favor instale los paquetes necesarios para el funcionamiento de este programa  #"
-echo "   # Los paquetes necesarios son nmap, nikto, hydra, ncat, golang y los scripts de      #"
-echo "   # escaneo de vulnerabilidates de nmap, los mismos se encuentran ubicados bajo el     #"
-echo "   # directorio Install_dependencies, llamados nmap-vulners y scipag_vulscan, para ello #"
-echo "   # puede ejecutar el script install_dependencies que se encuentra dentro del mismo    #"
-echo "   # directorio.                                                                        #"
+echo "   # Please install the necessary packages for this program to work properly.           #"
+echo "   # Required packages are nmap, nikto, hydra, ncat, golang and scripts for vuln scan   #"
+echo "   # called "nmap-vulners" and "scipag-_vulscan" from nmap which are located under      #"
+echo "   # "Install_dependencies" folder.                                                     #"
 echo "   #                                                                                    #"
 echo "   ######################################################################################"
 echo "   #                                                                                    #"
-echo "   #    ██╗      Por favor tenga en cuenta que si no instala las dependencias           #"
-echo "   #    ██║      no podra continuar con le ejecucion de esa utildad.                    #"
-echo "   #    ██║      Si desea continuar, por favor tenga en cuenta que el sistema           #"
-echo "   #    ╚═╝      le pedira confirmacion o clave para autorizar la instalacion           #"
-echo "   #    ██╗      de paquetes.                                                           #"
-echo "   #    ╚═╝                                                                             #"
+echo "   #    ██╗      Please be aware that if dependencies are no meet / installed           #"
+echo "   #    ██║      You will not be able to run this program or any of its components.     #"
+echo "   #    ██║      The system is going to ask for  system credentials in order to start   #"
+echo "   #    ╚═╝      any dependency/package installation that is missing.                   #"
+echo "   #    ██╗                                                                             #"
+echo "   #    ╚═╝                                                                 Enjoy it!   #"
 echo "   #                                                                                    #"
 echo "   ######################################################################################"
 echo ""
-read -p "   Desea instalar las dependencias? (s/n):" resp
+read -p "   Do you wish to install depéndencies? (y/n):" resp
     case $resp in
-        [Ss]* ) echo "" && echo "   Al Parecer algunas dependencias deben ser instaladas." && cd Install_dependencies && ./install_dependencies &> ../Modules/REPORTS/dependencies.txt & progress1 && cd $location;;
+        [Yy]* ) echo "" && echo "   Looks like some dependencies must be installed." && cd Install_dependencies && ./install_dependencies &> ../Modules/REPORTS/dependencies.txt & progress1 && cd $location;;
         [Nn]* ) exit ;;
-        * ) echo "Por favor responda 's' para si o 'n' para no.";;
+        * ) echo "Please answer 'y' or 'Y' for yes y o and 'n' or 'N' for no.";;
     esac
 echo ""
 }
@@ -71,17 +69,17 @@ perl -e '$|=@s=qw(<->=============] =<->============] ==<->===========] ===<->==
 
 pause(){
   echo ""
-  read -p "       [Presione [Enter] para continuar.]" fackEnterKey
+  read -p "       [Press [Enter] to continue.]" fackEnterKey
 }
 
 one(){
         cd Modules/NMAP_GO
-        echo "  Escaneo y revision de parches necesarios con NMAP"
+        echo "  Check and Scan for patches and or CVE's with NMAP"
         echo "  #################################################"
         echo ""
-        read -p "  Ingrese IP de dispositivo a escanear:" ip
+        read -p "Type a device IP ro scan scan:" ip
         echo ""
-        echo "  Verificando actualizaciones y parches pendientes:" 
+        echo "  Checking for pending updates and patches:" 
         go run nmap_cve_check.go $ip > ../REPORTS/Escaneo_de_CVEs_$ip_$date.txt & progress1
         cd $location
         pause
@@ -89,10 +87,10 @@ one(){
 
 two(){  
         cd Modules/NMAP_GO
-        echo "Escaneo de vulnerabilidades con NMAP"
-        echo "####################################"
+        echo "Vulnerabilities scanning with NMAP"
+        echo "##################################"
         echo ""
-        read -p "Ingrese IP de dispositivo a escanear:" ip
+        read -p "Type a device IP ro scan scan:" ip
         echo ""
         go run nmap_vulnerabilities.go $ip > ../REPORTS/Escaneo_vulnerabilidades_$ip_$date.txt & progress1
         cd $location
@@ -101,10 +99,10 @@ two(){
 
 three(){
         cd Modules/NIKTO_GO
-        echo "Escaneo de vulnerabilidades web con NIKTO"
-        echo "#########################################"
-        read -p "Ingrese IP de dispositivo a escanear:" ip
-        read -p "Ingrese puerto de aplicacion web:" puerto
+        echo "Web vulnerability scanning with NIKTO"
+        echo "#####################################"
+        read -p "Type a device IP ro scan scan:" ip
+        read -p "Type a web application port:" puerto
         go run nikto_go.go $ip:$puerto > ../REPORTS/Escaneo_vulnerabilidades_apps_web_$ip_$date.txt & progress1
         cd $location
         pause
@@ -112,12 +110,12 @@ three(){
 
 four(){
         cd Modules/NMAP_GO
-        echo "Escaneo y verificacion de puertos abiertos"
-        echo "##########################################"
-        read -p "Ingrese IP de dispositivo a escanear:" ip
+        echo "Open ports scanning validation"
+        echo "##############################"
+        read -p "Type a device IP ro scan scan:" ip
         echo ""
-        echo "Listado de puertos abiertos"
-        echo "==========================="
+        echo "Open ports list"
+        echo "==============="
         go run port_scanner.go $ip | sed 's/Open/Abierto/g' | sed 's/Port/Puerto/g' > ../REPORTS/Puertos_abiertos_en_$ip_$date.txt & progress1
         cd $location
         pause
@@ -125,12 +123,12 @@ four(){
 
 five(){
         cd Modules/HYDRA_GO 
-        echo "Pentestting con Hydra"
+        echo "Pentesting with Hydra"
         echo "#####################"
-        read -p "Ingrese IP de dispositivo a escanear:" ip
-        read -p "Ingrese nombre servicio, ejemplo: rdp,ssh,ftp,telnet:" servicio
+        read -p "Type a device IP ro scan scan:" ip
+        read -p "Type service name, Ex: rdp,ssh,ftp,telnet:" servicio
         echo ""
-        echo "Ejecutando ataque de fuerza bruta con diccionarios"
+        echo "Executing brute force attack with multiple dictionaries"
         echo "=================================================="
         go run hydra_go.go $ip $servicio | grep -vi github | grep -vi warning
         cd $location
@@ -141,21 +139,21 @@ show_menus() {
         echo ""
 	echo "  ========================== ~~~~~~~~~~~~~~~~~~~~~ ============================="	
 	echo "  ========================== ~~~~~~~~~~~~~~~~~~~~~ ============================="	
-	echo "                             | MENU - PRINCIPAL. | "
+	echo "                             |    MAIN - MENU    | "
 	echo "                             ~~~~~~~~~~~~~~~~~~~~~"
 	echo "  ========================== ~~~~~~~~~~~~~~~~~~~~~ ============================="	
-	echo "  **           1. Escaneo y revision de parches necesarios con NMAP           **"
-	echo "  **           2. Escaneo de vulnerabilidades con NMAP                        **"
-	echo "  **           3. Escaneo de seguridad web con NIKTO                          **"
-	echo "  **           4. Escaneo de puertos abiertos                                 **"
-	echo "  **           5. Pentesting con Hydra                                        **"
+	echo "  **           1. Check and Scan for patches and or CVE's with NMAP           **"
+	echo "  **           2. Vulnerabilities scanning with NMAP                          **"
+	echo "  **           3. Web vulnerability scanning with NIKTO                       **"
+	echo "  **           4. Open ports scanning validation                              **"
+	echo "  **           5. Pentesting with Hydra                                       **"
 	echo "  **           6. Exit                                                        **"
 	echo "  ========================== ~~~~~~~~~~~~~~~~~~~~~ ============================="	
 }
 
 read_options(){
 	local choice
-	read -p "                          |Digite una opcion [1-6] :" choice
+	read -p "                          |Type an option [1-6] :" choice
         echo ""
 	case $choice in
 		1) one;;
@@ -169,12 +167,12 @@ read_options(){
 }
  
 # ----------------------------------------------
-# Detecta CTRL+C, CTRL+Z como escape para salir
+# Detects CTRL+C, CTRL+Z like "escape" to exit
 # ----------------------------------------------
 trap '' SIGINT SIGQUIT SIGTSTP
  
 # -------------------------------------------
-# Funcion p/pal - ciclo inifinito condicional
+# Main Function - inifinite conditional loop
 # -------------------------------------------
 while true
 do
