@@ -3,36 +3,36 @@ Security Scanning
                                                          
 
 
-Importante:
-===========
-
-Esta herramienta se ha desarrollado para ejecutarse exclusivamente en dictribuciones Ubuntu 18.x en adelante.
-Posiblemente correría en Debian, pero no ha sido probada.
-Tambien se ha agregado un vulvnerability scanner en Python, que tiene la misma funcionalidad.
-
-Aun me encuentro trabajndo en esto pero con tiempo limitado por mi trabajo actual.
-
-Descripción:
-============
-Sistema desarrollado para evaluar y ejecutar pentesting sobre sistemas informáticos con el fin de identificar puntos débiles,
-esta herramienta no se ha desarrollado con fines delictivos.
-El uso de los datos y los efectos que pueda causar su ejecución son responsabilidad del usuario y no del desarrollador.
-Esta herramienta se ha desarrollado con fines éticos y estrictamente para ejecución de actividades de laboratorio.
-
-Ejecución:
+Important:
 ==========
+
+This tool has been developed to run exclusively on Ubuntu 18.x distributions and later.
+It would possibly run on Debian, but has not been tested.
+A Python vulnerability scanner has also been added, which has the same functionality.
+
+I'm still working on this but with limited time due to my current job.
+
+Description:
+============
+System developed to evaluate and perform pentesting on computer systems in order to identify weak points,
+This tool has not been developed for criminal purposes.
+The use of the data and the effects that its execution may cause are the responsibility of the user and not the developer.
+This tool has been developed for ethical purposes and strictly for the execution of laboratory activities.
+
+Execcution:
+===========
 ./security
 
-Reportes de ejecucion:
+Execution reports:
 ======================
-La ejecucion de esta utilidad hace registro de todo su actividad dentro en la siguientes ruta:
+The execution of this utility makes a record of all its activity within the following path:
 "Modules/REPORTES"
 
 
-Componentes:
-============
+Components:
+===========
 
-Esta utilidad consta de varios componentes, para lograr su funcionamiento debe tener en cuenta las siguientes dependencias:
+This utility consists of several components, to achieve its operation you must take into account the following dependencies:
  - Golang (go1.13.8 linux/amd64)
  - Python 3.5.x
  - Perl 5.x
@@ -43,72 +43,71 @@ Esta utilidad consta de varios componentes, para lograr su funcionamiento debe t
  - Bash
  - Git
 
-Programa principal:
-===================
+Main Program:
+=============
 
-El programa principal está escrito en bash, contiene algunas funciones en perl y cumple las siguientes funciones:
+The main program is written in bash, it contains some functions in perl and fulfills the following functions:
 
-1- Verificación de todas las dependencias necearias para el correcto funcionamiento de las subrutinas
-   (Scripts Golang, Scripts NMAP).
-   Sin estas dependencias, la solución no funcionará, por esta razón el programa principal dará inicio al 
-   proceso de instalación de dependencias automáticamente, pidiendo autorización y confirmación del usuario.
+1- Verification of all the necessary dependencies for the correct functioning of the subroutines
+   (Golang Scripts, NMAP Scripts).
+   Without these dependencies the solution will not work, for this reason the main program will start the
+   process of installation of dependencies automatically, requesting authorization and confirmation from the user.
    
-   La instalación de dependencias puede ser ejecutada manualmente de la siguiente manera:
-   El script de instalación de dependencias (install_dependencies) se encuentra ubicado en el folder denominado
-   "Install_dependencies", para ejecutarlo sólo es necesario correr el siguiente comando:
-   ./install_dependencies       
+   The installation of dependencies can be executed manually in the following way:  
+   The dependencies installation script (install_dependencies) is located in the folder named "Install_dependencies", 
+   to execute it it is only necessary to run the following command:  
+   -  ./install_dependencies
 
-2- Una vez las condiciones y dependencias son cumplidas, el programa principal presenta un menú con
-   diferentes opciones para escaneo y explotación de vulnerabilidades. 
+2- Once the conditions and dependencies are fulfilled, the main program presents a menu with
+   different options for scanning and exploitation of vulnerabilities.  
 
-Definición de subrutinas:
-=========================
+Sobroutines details:
+====================
 
-Golang:
-=======
-
-Se encuentran ubicadas en el folder "Modules" y clasificadas de la siguiente manera:
-
-HYDRA_GO: Contiene el codigo encargado de ejecutar tyareas de pentesting mediante
-          procedimiento de fuerza bruta.
-          Los diccionarios para dicho procedimiento se encuentran ubicados en el
-          folder denominado con el mismo nombre "Diccionarios".
-
-NIKTO_GO: Contiene el código de ejecucion de la herramienta de escaneo de vulnerabilidades
-          en aplicaciones/portales web, en esta utilidad es necesario especificar el puerto
-          en el que se ejecuta la aplicación objetivo de la evaluación.
-
-NMAP_GO: Contiene código de ejecución de varias operaciones con NMAP, tales como:
-         - Revisión de CVE's
-         - Revisión de vulnerabilidades
-         - Revisión de puertos abiertos y disponibles. 
-
-Bash:
-=====
-El programa principal se encuentra escrito en este intérprete.
-
-Perl:
-=====
-La barra de progreso se encuentra escrita en perl, esta barra se encarga de monitorear
-el progreso de ejecuciones de algunas tareas de instalación de dependencias.
-
-Nmap:
-=====
-Herramienta con funcionalidades diversas enfocadas a la evaluación de vulnerabilidades.
-
-Nikto:
-======
-Herramienta con funcionalidades diversas enfocadas a la evaluación de vulnerabilidades
-en aplicaciones web.
-
-Hydra:
-======
-Herramienta con funcionalidades de crackeo de credenciales enfocada a la penetración
-de diversos sistemas informáticos y/o de comunicaciones mediante mecanismos de
-fuerza bruta.
+### Golang:
 
 
-Desarrollado por:  
+Each subroutine is located in a folder called "Modules" with the following structure:
+
+HYDRA_GO:  Contains the code in charge of executing pentesting tasks through brute force procedure.     
+           The dictionaries for this procedure are located in a folder called the same way "Dictionaries".  
+
+NIKTO_GO:  Contains the execution code of the vulnerability scanning tool for web applications, it is necessary to specify the port    
+           in which the target application of the evaluation is executed.  
+
+NMAP_GO:   Contains execution code for multiple NMAP operations, such as:    
+           - Review of CVEs  
+           - Review of vulnerabilities   
+           - Review of open and available ports     
+
+Development details and tools used:  
+===================================
+
+### Bash:
+
+The main program is written in this interpreter.  
+
+### Perl:
+
+The progress bar is written in perl, this bar is responsible for monitoring   
+the execution progress of some dependency installation tasks.  
+
+### Nmap:
+
+Tool with diverse functionalities focused on the evaluation of vulnerabilities.  
+
+### Nikto:
+
+Tool with diverse functionalities focused on the evaluation of vulnerabilities
+in web applications.
+
+### Hydra:
+
+Penetration-focused credential cracking tool of various computer and/or communication  
+systems through mechanisms of brute force.
+
+
+## Developed by:  
  Francisco Javier Gutierrez G.  
  Sr Linux Engineer  
  ingenierialinuxpereira@gmail.com  
