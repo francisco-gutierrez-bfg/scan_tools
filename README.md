@@ -8,6 +8,9 @@ Importante:
 
 Esta herramienta se ha desarrollado para ejecutarse exclusivamente en dictribuciones Ubuntu 18.x en adelante.
 Posiblemente correría en Debian, pero no ha sido probada.
+Tambien se ha agregado un vulvnerability scanner en Python, que tiene la misma funcionalidad.
+
+Aun me encuentro trabajndo en esto pero con tiempo limitado por mi trabajo actual.
 
 Descripción:
 ============
