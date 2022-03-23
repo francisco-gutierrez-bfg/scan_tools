@@ -8,6 +8,7 @@ Important:
 
 This tool has been developed to run exclusively on Ubuntu 18.x distributions and later.
 It would possibly run on Debian, but has not been tested.  
+
 A Python vulnerability scanner has also been added, which has the same functionality.
 
 I'm still working on this but with limited time due to my current job.
