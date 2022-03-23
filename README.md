@@ -19,9 +19,11 @@ This tool has not been developed for criminal purposes.
 The use of the data and the effects that its execution may cause are the responsibility of the user and not the developer.
 This tool has been developed for ethical purposes and strictly for the execution of laboratory activities.
 
-Execcution:
-===========
-./security
+Execution:
+==========
+./security   ---> In case you want to use the bash/golang script  
+python security.py ---> In case you want to use the python script  
+python3 security.py ---> In case you don´t have your environment set and you have python3 installed.
 
 Execution reports:
 ======================
