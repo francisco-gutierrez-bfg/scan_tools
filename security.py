@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 # -*- coding: utf-8 -*-
-#Título          :security.py
-#descripción     :Escaneo de Vulnerabilidades y Pentesting
-#autor           :Francisco Gutiérrez
-#fecha           : Jun 25 2021
-#versión         :1
-#uso             :python security.py
+#Title           :security.py
+#description     :Vulnerability Scanning and Pentesting
+#author          :Francisco Gutiérrez
+#date            :Jun 25 2021
+#version         :1
+#usage           :python security.py
 #python_version  :3.x.x 
 #=======================================================================
 
@@ -18,27 +18,27 @@ menu_actions  = {}
 #print(os.getcwd())
 
 # ========================
-#     Función de Menu
+#         Menu
 # ========================
 
-# Menú principal
+# Main Menu
 def main_menu():
     os.system('clear')
     
-    print ("Escaneo de vulnerabilidades y pentesting\n")
-    print ("########################################")
-    print ("1. Escaneo y chequeo de CVE's")
-    print ("2. Escaneo de vulnerabilidades con NMAP")
-    print ("3. Escaneo de vulnerabilidades web con NIKTO")
-    print ("4. Escaneo y verificación de puertos abiertos")
-    print ("5. Pentesting con Hydra y Nmap")
-    print ("\n0. Salir")
+    print ("Vulnerability scan and pentesting\n")
+    print ("#################################")
+    print ("1. Check for CVE's")
+    print ("2. Vulnerability scan with NMAP")
+    print ("3. Web vulnerability scan with NIKTO")
+    print ("4. Open ports validation")
+    print ("5. Pentesting with Hydra and Nmap")
+    print ("\n0. Exit")
     choice = input(" >>  ")
     exec_menu(choice)
 
     return
 
-# Ejecución de Menú
+# Main menu execution
 def exec_menu(choice):
     os.system('clear')
     ch = choice.lower()
@@ -48,50 +48,50 @@ def exec_menu(choice):
         try:
             menu_actions[ch]()
         except KeyError:
-            print ("Opción inválida.\n")
+            print ("Inválid Option.\n")
             menu_actions['main_menu']()
     return
 
 # Opción 1
 def menu1():
-    print ("Escaneo y chequeo de CVE's\n")
-    print ("##########################")
-    ip = input("Ingrese IP de dispositivo:")
+    print ("Check for CVE's\n")
+    print ("###############")
+    ip = input("Type a device IP:")
     os.system('nmap -Pn --script vuln ' + ip)
-    input("Presione Enter para continuar...")
+    input("Press Enter to continue...")
     back()
     return
 
 
 # Opción 2
 def menu2():
-    print ("Escaneo de Vulnerabilidades\n")
-    print ("###########################")
-    ip = input("Ingrese IP de dispositivo:")
+    print ("Vulnerability scan with NMAP\n")
+    print ("############################")
+    ip = input("Type a device IP:")
     os.system('nmap -sV --script=nmap-vulners ' + ip)
-    input("Presione Enter para continuar...")
+    input("Press Enter to continue...")
     back()
     return
 
 # Opción 3
 def menu3():
-    print ("Escaneo de Vulnerabilidades de sitios web\n")
-    print ("#########################################")
-    ip = input("Ingrese IP de dispositivo:")
-    puerto = input("Ingrese puerto de sitio web:")
+    print ("Web sites vulnerability scan with NIKTO\n")
+    print ("#######################################")
+    ip = input("Type a device IP:")
+    puerto = input("Type a web site/app URL:")
     command = "nikto -host %s -port %s" % (ip, puerto)
     os.system(command)
-    input("Presione Enter para continuar...")
+    input("Press Enter to continue...")
     back()
     return
 
 # Opción 4
 def menu4():
-    print ("Escaneo e identificación de puertos abiertos\n")
-    print ("###########################")
-    ip = input("Ingrese IP de dispositivo:")
+    print ("Open ports validation\n")
+    print ("#####################")
+    ip = input(Type a device IP:")
     os.system('nmap ' + ip)
-    input("Presione Enter para continuar...")
+    input("Press Enter to continue...")
     back()
     return
 
@@ -101,28 +101,28 @@ def menu5():
     print ("##########")
     print("")
     print ("   ##################################################################################################################")
-    print ("   #  Este proceso puede tardar un tiempo, posiblemente horas, presione <Enter> para continuar, si está de acuerdo  #")
+    print ("   #         This procedure can take more than usual, maybe hours, press <Enter> to continue if you agree.          #")
     print ("   ##################################################################################################################")
     input("")
     print("")
-    ip = input("Ingrese IP de dispositivo:")
-    puerto = input("Ingrese nombre servicio, ejemplo: rdp,ssh,ftp,telnet:")
-    puertonum = input("Ingrese número de puerto:")
+    ip = input("Type a device IP:")
+    puerto = input("type a service name, Ex: rdp,ssh,ftp,telnet:")
+    puertonum = input("Type port number:")
     print("")
-    print("Intentando fuerza bruta mediante Nmap...")
+    print("Trying brute force using Nmap...")
     command1 = "nmap -p %s --script %s-brute --script-args userdb=Modules/HYDRA_GO/diccionarios/wordlists/users.lst,passdb=Modules/HYDRA_GO/diccionarios/wordlists/passwords.lst %s" % (puertonum, puerto, ip)
     os.system(command1)
     print("")
-    print("Intentando fuerza bruta mediante Hydra...")
+    print("Trying brute force using Hydra...")
     command = "hydra -L Modules/HYDRA_GO/diccionarios/wordlists/users.lst -P Modules/HYDRA_GO/diccionarios/wordlists/passwords.lst %s %s | grep -vi github | grep -vi warning" % (ip, puerto)
     os.system(command)
     print("")
-    input("Presione Enter para continuar...")
+    input("Press Enter to continue...")
     back()
     return
 
 
-# Volver a menú principal
+# Back to main menu
 def back():
     menu_actions['main_menu']()
 
@@ -130,7 +130,7 @@ def exit():
     sys.exit()
 
 # ========================
-#    Definición de Menú
+#   Main Menu Definition
 # ========================
 
 menu_actions = {
@@ -144,7 +144,7 @@ menu_actions = {
 }
 
 # =======================
-#     Programa P/pal
+#      Main Program
 # =======================
 
 if __name__ == "__main__":
