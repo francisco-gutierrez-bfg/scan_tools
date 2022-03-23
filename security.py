@@ -6,9 +6,9 @@
 #author          :Francisco Gutiérrez
 #date            :Jun 25 2021
 #version         :1
-#usage           :python security.py
+#usage           :python security.py or python3 security.py if you don´t have your environment var set.
 #python_version  :3.x.x 
-#=======================================================================
+#======================================================================================================
 
 import sys, os
 
