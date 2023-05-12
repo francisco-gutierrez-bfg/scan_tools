@@ -26,7 +26,7 @@ func main() {
 
 	// instalación de argumentos
 	//args := []string{"nmap", "-v", "-A", os.Args[1]}
-	args := []string{"nmap", "-sV", "--script=nmap-vulners", os.Args[1]}
+	args := []string{"nmap", "-sV", "--script=nmapvulners/", os.Args[1]}
 
 	env := os.Environ()
 

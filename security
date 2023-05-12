@@ -63,8 +63,13 @@ do
 done
 }
 
+
+progress(){
+perl -e '$|=@s=qw(<->=============] =<->============] ==<->===========] ===<->==========] ====<->=========] =====<->========] ======<->=======] =======<->======] ========<->=====] ========<->=====] =========<->====] ==========<->===] ===========<->==] ============<->=] =============<->] ============<->=] ===========<->==] ==========<->===] =========<->====] ========<->=====] =======<->======] ======<->=======] =====<->========] ====<->=========] ===<->==========] ==<->===========] =<->============]);while(kill 0,'$!'){ print "\r   Saving Report to Modules/REPORTS[",$s[$t++%($#s+1)];select(undef,undef,undef,0.2);}'
+}
+
 progress1(){
-perl -e '$|=@s=qw(<->=============] =<->============] ==<->===========] ===<->==========] ====<->=========] =====<->========] ======<->=======] =======<->======] ========<->=====] ========<->=====] =========<->====] ==========<->===] ===========<->==] ============<->=] =============<->] ============<->=] ===========<->==] ==========<->===] =========<->====] ========<->=====] =======<->======] ======<->=======] =====<->========] ====<->=========] ===<->==========] ==<->===========] =<->============]);while(kill 0,'$!'){ print "\r   Instalando Dependencias[",$s[$t++%($#s+1)];select(undef,undef,undef,0.2);}'
+perl -e '$|=@s=qw(<->=============] =<->============] ==<->===========] ===<->==========] ====<->=========] =====<->========] ======<->=======] =======<->======] ========<->=====] ========<->=====] =========<->====] ==========<->===] ===========<->==] ============<->=] =============<->] ============<->=] ===========<->==] ==========<->===] =========<->====] ========<->=====] =======<->======] ======<->=======] =====<->========] ====<->=========] ===<->==========] ==<->===========] =<->============]);while(kill 0,'$!'){ print "\r   Installing Dependencies[",$s[$t++%($#s+1)];select(undef,undef,undef,0.2);}'
 }
 
 pause(){
@@ -80,7 +85,7 @@ one(){
         read -p "Type a device IP ro scan scan:" ip
         echo ""
         echo "  Checking for pending updates and patches:" 
-        go run nmap_cve_check.go $ip > ../REPORTS/Escaneo_de_CVEs_$ip_$date.txt & progress1
+        go run nmap_cve_check.go $ip > ../REPORTS/Escaneo_de_CVEs_$ip_$date.txt & progress
         cd $location
         pause
 }
@@ -92,7 +97,7 @@ two(){
         echo ""
         read -p "Type a device IP ro scan scan:" ip
         echo ""
-        go run nmap_vulnerabilities.go $ip > ../REPORTS/Escaneo_vulnerabilidades_$ip_$date.txt & progress1
+        go run nmap_vulnerabilities.go $ip > ../REPORTS/Escaneo_vulnerabilidades_$ip_$date.txt & progress
         cd $location
         pause
 }
@@ -103,7 +108,7 @@ three(){
         echo "#####################################"
         read -p "Type a device IP ro scan scan:" ip
         read -p "Type a web application port:" puerto
-        go run nikto_go.go $ip:$puerto > ../REPORTS/Escaneo_vulnerabilidades_apps_web_$ip_$date.txt & progress1
+        go run nikto_go.go $ip:$puerto > ../REPORTS/Escaneo_vulnerabilidades_apps_web_$ip_$date.txt & progress
         cd $location
         pause
 }
@@ -116,7 +121,7 @@ four(){
         echo ""
         echo "Open ports list"
         echo "==============="
-        go run port_scanner.go $ip | sed 's/Open/Abierto/g' | sed 's/Port/Puerto/g' > ../REPORTS/Puertos_abiertos_en_$ip_$date.txt & progress1
+        go run port_scanner.go $ip | sed 's/Open/Abierto/g' | sed 's/Port/Puerto/g' > ../REPORTS/Puertos_abiertos_en_$ip_$date.txt & progress
         cd $location
         pause
 }

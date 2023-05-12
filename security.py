@@ -57,7 +57,7 @@ def menu1():
     print ("Check for CVE's\n")
     print ("###############")
     ip = input("Type a device IP:")
-    os.system('sudo  -Pn --script vuln ' + ip)
+    os.system('sudo nmap -Pn --script vuln ' + ip)
     input("Press Enter to continue...")
     back()
     return
@@ -68,7 +68,7 @@ def menu2():
     print ("Vulnerability scan with NMAP\n")
     print ("############################")
     ip = input("Type a device IP:")
-    os.system('sudo nmap -sV --script=nmap-vulners ' + ip)
+    os.system('sudo nmap -sV --script=nmapvulners/ ' + ip)
     input("Press Enter to continue...")
     back()
     return
@@ -89,7 +89,7 @@ def menu3():
 def menu4():
     print ("Open ports validation\n")
     print ("#####################")
-    ip = input(Type a device IP:")
+    ip = input("Type a device IP:")
     os.system('sudo nmap ' + ip)
     input("Press Enter to continue...")
     back()
